@@ -4,6 +4,11 @@ let company = [];
 
 function onReady() {
   $('#submitEmployeeButton').on('click', submitEmployee);
+  $('#employeeInfoOut').on('click', '.deleteEmployeeButton', deleteEmployee);
+}
+
+function deleteEmployee() {
+  console.log('in deleteEmployee');
 }
 
 function displayInfo() {
@@ -11,7 +16,7 @@ function displayInfo() {
   let el = $('#employeeInfoOut');
   el.empty();
   for(let i = 0; i < company.length; i++) {
-    el.append(`<li>${company[i].firstName} ${company[i].lastName} ${company[i].idNumber} ${company[i].jobTitle} $${company[i].annualSalary}</li>`);
+    el.append(`<li>${company[i].firstName} ${company[i].lastName} ${company[i].idNumber} ${company[i].jobTitle} $${company[i].annualSalary} <button class="deleteEmployeeButton">Delete</button></li>`);
   }
 }
 

@@ -3,7 +3,7 @@ $(document).ready(onReady);
 let company = [];
 
 function onReady() {
-  $('#submitEmployeeButton').on('click', submitEmployee)
+  $('#submitEmployeeButton').on('click', submitEmployee);
 }
 
 function displayInfo() {
@@ -27,7 +27,7 @@ function submitEmployee() {
   }
   // store the info
   company.push(employee);
-  // calculate monthly cost & display to DOM
+  // calculate monthly cost & display to DOM & if > $20,000 add red bg color
   monthlyCost();
   // display employee info to DOM
   displayInfo();
@@ -37,7 +37,6 @@ function submitEmployee() {
   $('#idNumberIn').val('');
   $('#jobTitleIn').val('');
   $('#annualSalaryIn').val('');
-  // if the total monthly cost exceeds $20,000, add a red background color to the total monthly cost.
 }
 
 function monthlyCost() {
@@ -48,6 +47,10 @@ function monthlyCost() {
   for(let i = 0; i < company.length; i++) {
     monthlyCost += Number(company[i].annualSalary) / 12;
   }
-  el.append(monthlyCost);
+  el.append(`$${monthlyCost}`);
   console.log('monthlyCost:', monthlyCost);
+  // if the total monthly cost exceeds $20,000, add a red background color to the total monthly cost.
+  if(monthlyCost > 20000) {
+    el.css('background-color', 'red');
+  }
 }

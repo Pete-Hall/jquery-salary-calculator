@@ -39,7 +39,7 @@ function monthlyCost(arrayToAdd) { // when called, calculates the total monthly 
   for(let i = 0; i < arrayToAdd.length; i++) {
     monthlyCost += Number(arrayToAdd[i].annualSalary) / 12;
   }
-  el.append(`$${monthlyCost}`);
+  el.append(`$${monthlyCost.toFixed(2)}`); // .toFixed() dictates how many decimal points to keep the number at. Floating point issue
   console.log('monthlyCost:', monthlyCost);
   // if the total monthly cost exceeds $20,000, add a red background color to the total monthly cost.
   if(monthlyCost > 20000) {

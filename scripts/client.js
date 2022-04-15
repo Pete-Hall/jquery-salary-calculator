@@ -9,15 +9,25 @@ function onReady() {
 
 function deleteEmployee() {
   console.log('in deleteEmployee');
+  // remove employee from DOM
+  // $(this).parent().remove();
+  // get this item's index (updating displayInfo to include data-index="${i}")
+  console.log($(this).data('index'));
+  // STRETCH: remove employee's salary from the reported total
+  company.splice($(this).data('index'), 1);
+  // redisplay the updated company array onto the DOM
+  displayInfo(company);
 }
 
-function displayInfo() {
+function displayInfo(infoToDisplay) {
   console.log('in displayInfo');
   let el = $('#employeeInfoOut');
   el.empty();
-  for(let i = 0; i < company.length; i++) {
-    el.append(`<li>${company[i].firstName} ${company[i].lastName} ${company[i].idNumber} ${company[i].jobTitle} $${company[i].annualSalary} <button class="deleteEmployeeButton">Delete</button></li>`);
+  for(let i = 0; i < infoToDisplay.length; i++) {
+    el.append(`<li>${infoToDisplay[i].firstName} ${infoToDisplay[i].lastName} ${infoToDisplay[i].idNumber} ${infoToDisplay[i].jobTitle} $${infoToDisplay[i].annualSalary} <button class="deleteEmployeeButton" data-index="${i}">Delete</button></li>`);
   }
+  // display monthly cost to DOM
+  monthlyCost(company);
 }
 
 function submitEmployee() {
@@ -32,10 +42,8 @@ function submitEmployee() {
   }
   // store the info
   company.push(employee);
-  // calculate monthly cost & display to DOM & if > $20,000 add red bg color
-  monthlyCost();
-  // display employee info to DOM
-  displayInfo();
+  // display employee and monthly cost info to DOM
+  displayInfo(company);
   // clear input fields
   $('#firstNameIn').val('');
   $('#lastNameIn').val('');
@@ -44,13 +52,14 @@ function submitEmployee() {
   $('#annualSalaryIn').val('');
 }
 
-function monthlyCost() {
+function monthlyCost(arrayToAdd) {
   console.log('in monthlyCost');
+  // calculate monthly cost
   let monthlyCost = 0;
   let el = $('#monthlyCostOut');
   el.empty();
-  for(let i = 0; i < company.length; i++) {
-    monthlyCost += Number(company[i].annualSalary) / 12;
+  for(let i = 0; i < arrayToAdd.length; i++) {
+    monthlyCost += Number(arrayToAdd[i].annualSalary) / 12;
   }
   el.append(`$${monthlyCost}`);
   console.log('monthlyCost:', monthlyCost);

@@ -4,7 +4,8 @@ let company = [];
 
 function onReady() { // click handlers
   $('#submitEmployeeButton').on('click', submitEmployee);
-  $('#employeeInfoOut').on('click', '.deleteEmployeeButton', deleteEmployee);
+  // $('#employeeInfoOut').on('click', '.deleteEmployeeButton', deleteEmployee); // BASE mode to delete <li>
+  $('#employeeInfoTable').on('click', '.deleteEmployeeButton', deleteEmployee); // STRETCH: change delete button to delete the table row
 }
 
 function deleteEmployee() { // removes an employee from the DOM, removes their info from the total monthly salary and updates the DOM
@@ -21,12 +22,13 @@ function deleteEmployee() { // removes an employee from the DOM, removes their i
 
 function displayInfo(infoToDisplay) {  // when called, displays info to the DOM and the total monthly cost to the DOM. In this case, we will be using the company info
   console.log('in displayInfo');
-  // let el = $('#employeeInfoOut'); // base mode displays info as a <ul>
-  let el = $('#displayInfoOut');
-  el.empty();
+  //let el = $('#employeeInfoOut'); // BASE mode displays info as a <ul>
+  let elTable = $('#employeeInfoTable');
+  //el.empty();
+  elTable.empty();
   for(let i = 0; i < infoToDisplay.length; i++) {
-    // el.append(`<li>${infoToDisplay[i].firstName} ${infoToDisplay[i].lastName} ${infoToDisplay[i].idNumber} ${infoToDisplay[i].jobTitle} $${infoToDisplay[i].annualSalary} <button class="deleteEmployeeButton" data-index="${i}">Delete</button></li>`); // base mode displays info as a <ul>
-    el.append(`<li>${infoToDisplay[i].firstName} ${infoToDisplay[i].lastName} ${infoToDisplay[i].idNumber} ${infoToDisplay[i].jobTitle} $${infoToDisplay[i].annualSalary} <button class="deleteEmployeeButton" data-index="${i}">Delete</button></li>`);
+    // el.append(`<li>${infoToDisplay[i].firstName} ${infoToDisplay[i].lastName} ${infoToDisplay[i].idNumber} ${infoToDisplay[i].jobTitle} $${infoToDisplay[i].annualSalary} <button class="deleteEmployeeButton" data-index="${i}">Delete</button></li>`); // BASE mode displays info as a <ul>
+    elTable.append(`<tr><td>${infoToDisplay[i].firstName}</td><td>${infoToDisplay[i].lastName}</td><td>${infoToDisplay[i].idNumber}</td><td>${infoToDisplay[i].jobTitle}</td><td>${infoToDisplay[i].annualSalary}</td><td><button class="deleteEmployeeButton" data-index="${i}">Delete</button></td></tr>`); // STRETCH: display info as a <table> to look like the wireframe
   }
   // display monthly cost to DOM
   monthlyCost(company);

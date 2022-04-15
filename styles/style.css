@@ -1,0 +1,31 @@
+html, body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+header {
+  background-color: gray;
+  color: #FAFAFA;
+  padding: 50px 50px 5px 50px;
+  text-align: center;
+}
+
+#inputDiv {
+  padding-left: 10px;
+}
+
+#outputDiv {
+  padding-left: 10px;
+}
+
+#employeeInfoTable {
+  border: 1px solid black;
+}
+
+#employeeInfoTable th {
+  border: 1px solid red;
+}
+
+#employeeInfoTable td {
+  border: 1px solid green;
+}

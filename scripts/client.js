@@ -21,9 +21,11 @@ function deleteEmployee() { // removes an employee from the DOM, removes their i
 
 function displayInfo(infoToDisplay) {  // when called, displays info to the DOM and the total monthly cost to the DOM. In this case, we will be using the company info
   console.log('in displayInfo');
-  let el = $('#employeeInfoOut');
+  // let el = $('#employeeInfoOut'); // base mode displays info as a <ul>
+  let el = $('#displayInfoOut');
   el.empty();
   for(let i = 0; i < infoToDisplay.length; i++) {
+    // el.append(`<li>${infoToDisplay[i].firstName} ${infoToDisplay[i].lastName} ${infoToDisplay[i].idNumber} ${infoToDisplay[i].jobTitle} $${infoToDisplay[i].annualSalary} <button class="deleteEmployeeButton" data-index="${i}">Delete</button></li>`); // base mode displays info as a <ul>
     el.append(`<li>${infoToDisplay[i].firstName} ${infoToDisplay[i].lastName} ${infoToDisplay[i].idNumber} ${infoToDisplay[i].jobTitle} $${infoToDisplay[i].annualSalary} <button class="deleteEmployeeButton" data-index="${i}">Delete</button></li>`);
   }
   // display monthly cost to DOM

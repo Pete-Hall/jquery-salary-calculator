@@ -23,7 +23,7 @@ function deleteEmployee() { // removes an employee from the DOM, removes their i
 function displayInfo(infoToDisplay) {  // when called, displays info to the DOM and the total monthly cost to the DOM. In this case, we will be using the company info
   console.log('in displayInfo');
   //let el = $('#employeeInfoOut'); // BASE mode displays info as a <ul>
-  let elTable = $('#employeeInfoTable');
+  let elTable = $('#employeeInfoTable'); // part of STRETCH
   //el.empty();
   elTable.empty();
   for(let i = 0; i < infoToDisplay.length; i++) {

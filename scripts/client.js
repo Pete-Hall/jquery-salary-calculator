@@ -43,8 +43,10 @@ function monthlyCost(arrayToAdd) { // when called, calculates the total monthly 
   for(let i = 0; i < arrayToAdd.length; i++) {
     monthlyCost += Number(arrayToAdd[i].annualSalary) / 12;
   }
-  el.append(`$${monthlyCost.toFixed(2)}`); // .toFixed() dictates how many decimal points to keep the number at. Floating point issue
+  //el.append(`$${monthlyCost.toFixed(2)}`); // .toFixed() dictates how many decimal points to keep the number at. Floating point issue
+  el.append(`${monthlyCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`); // https://stackoverflow.com/questions/9372624/formatting-a-number-as-currency-using-css and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
   console.log('monthlyCost:', monthlyCost);
+  console.log('monthlyCost LocaleString:', monthlyCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' })); 
   // if the total monthly cost exceeds $20,000, add a red background color to the total monthly cost.
   if(monthlyCost > 20000) {
     el.css('background-color', 'red');

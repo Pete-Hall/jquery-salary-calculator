@@ -18,14 +18,25 @@ header {
   padding-left: 10px;
 }
 
-#employeeInfoTable {
-  border: 1px solid black;
+table, td, th {
+  border-collapse: collapse;
+  border: 2px solid black;
+  padding: 10px;
 }
 
-#employeeInfoTable th {
-  border: 1px solid red;
+th {
+  background-color: #b1b2b0;
 }
 
-#employeeInfoTable td {
-  border: 1px solid green;
+tr:nth-child(even) {
+  background-color: lightgrey;
 }
+
+tfoot {
+  height: 40px;
+}
+
+.blankRow {
+  background-color: lightgrey;
+}
+

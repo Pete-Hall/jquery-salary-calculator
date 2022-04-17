@@ -28,7 +28,8 @@ function displayInfo(infoToDisplay) {  // when called, displays info to the DOM 
   elTable.empty();
   for(let i = 0; i < infoToDisplay.length; i++) {
     // el.append(`<li>${infoToDisplay[i].firstName} ${infoToDisplay[i].lastName} ${infoToDisplay[i].idNumber} ${infoToDisplay[i].jobTitle} $${infoToDisplay[i].annualSalary} <button class="deleteEmployeeButton" data-index="${i}">Delete</button></li>`); // BASE mode displays info as a <ul>
-    elTable.append(`<tr><td>${infoToDisplay[i].firstName}</td><td>${infoToDisplay[i].lastName}</td><td>${infoToDisplay[i].idNumber}</td><td>${infoToDisplay[i].jobTitle}</td><td>${infoToDisplay[i].annualSalary}</td><td><button class="deleteEmployeeButton" data-index="${i}">Delete</button></td></tr>`); // STRETCH: display info as a <table> to look like the wireframe
+    elTable.append(`<tr><td>${infoToDisplay[i].firstName}</td><td>${infoToDisplay[i].lastName}</td><td>${infoToDisplay[i].idNumber}</td><td>${infoToDisplay[i].jobTitle}</td><td>${Number(infoToDisplay[i].annualSalary).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td><td><button class="deleteEmployeeButton" data-index="${i}">Delete</button></td></tr>`); // STRETCH: display info as a <table> to look like the wireframe and include currency format
+    //console.log('in displayInfo testing currency format:', Number(infoToDisplay[i].annualSalary).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
   }
   // display monthly cost to DOM
   monthlyCost(company);

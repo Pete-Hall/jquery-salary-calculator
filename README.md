@@ -1,6 +1,4 @@
-# Project Name
-
-Employee Salary Calculator
+# Employee Salary Calculator
 
 [Project Instructions](./INSTRUCTIONS.md)
 

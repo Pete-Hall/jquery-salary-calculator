@@ -49,3 +49,7 @@ tfoot {
   padding: 0 10px 0 10px;
 
 }
+
+.monthlyOverBudget {
+  background-color: red;
+}

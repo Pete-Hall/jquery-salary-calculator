@@ -50,15 +50,24 @@ function monthlyCost(arrayToAdd) { // when called, calculates the total monthly 
   console.log('monthlyCost LocaleString:', monthlyCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' })); 
   // if the total monthly cost exceeds $20,000, add a red background color to the total monthly cost.
   if(monthlyCost > 20000) {
-    el.css('background-color', 'red');
+    //el.css('background-color', 'red');
+    el.addClass("monthlyOverBudget");
   }
   else { // removes the background color if the total monthly cost is ever not > 20000
-    el.css('background-color', '');
+    //el.css('background-color', '');
+    el.removeClass("monthlyOverBudget");
   }
 }
 
 function submitEmployee() { // stores the input field's information into the company and displays it on the DOM
   console.log('in submitEmployee');
+  // checks for duplicate ID number since the ID number should be unique
+  for(let i = 0; i < company.length; i++) {
+    if($('#idNumberIn').val() === company[i].idNumber) {
+      alert('Duplicate ID number, cannot add this employee');
+      return false;
+    }
+  }
   // collect form info
   let employee = {
     firstName: $('#firstNameIn').val(),
